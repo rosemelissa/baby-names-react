@@ -1,0 +1,33 @@
+Body {
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+}
+
+#babyNamesList {
+    border: 1px dotted purple;
+    width: 50vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.babyName {
+    font-weight: bolder;
+    border-radius: 2px;
+    padding: 2px;
+    margin: 2px;
+}
+
+.f {
+    color:rgb(150, 0, 75);
+    background-color: lightpink;
+}
+
+.m {
+    color: darkblue;
+    background-color: lightblue;
+}
