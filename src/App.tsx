@@ -1,7 +1,7 @@
-import NamesList from './components/NamesList';
-import babyNamesData from './babyNamesData.json';
+import NamesList from "./components/NamesList";
+import babyNamesData from "./babyNamesData.json";
 
-const sortedNames = babyNamesData.sort(function(a, b) {
+const sortedNames = babyNamesData.sort(function (a, b) {
   const nameA = a.name;
   const nameB = b.name;
   if (nameA > nameB) {
@@ -16,7 +16,9 @@ const sortedNames = babyNamesData.sort(function(a, b) {
 function App(): JSX.Element {
   return (
     <div id="babyNamesList">
-      {sortedNames.map((baby) => <NamesList key={baby.id} {...baby}/>)}
+      {sortedNames.map((baby) => (
+        <NamesList key={baby.id} {...baby} />
+      ))}
     </div>
   );
 }

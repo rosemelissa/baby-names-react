@@ -1,12 +1,15 @@
 interface NamesListProps {
-    id: number,
-    name: string,
-    sex: string,
-
+  id: number;
+  name: string;
+  sex: string;
 }
 
-function NamesList({id, name, sex}: NamesListProps): JSX.Element {
-    return (<p className={`babyName ${sex}`} key={id}>{name}</p>);
+function NamesList({ id, name, sex }: NamesListProps): JSX.Element {
+  return (
+    <p className={`babyName ${sex}`} key={id}>
+      {name}
+    </p>
+  );
 }
 
-export default NamesList
+export default NamesList;
