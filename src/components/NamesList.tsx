@@ -1,14 +1,26 @@
-interface NamesListProps {
-  id: number;
-  name: string;
-  sex: string;
-}
+import NameCard from "./NameCard";
+import babyNamesData from "../babyNamesData.json";
 
-function NamesList({ id, name, sex }: NamesListProps): JSX.Element {
+
+const sortedNames = babyNamesData.sort(function (a, b) {
+  const nameA = a.name;
+  const nameB = b.name;
+  if (nameA > nameB) {
+    return 1;
+  }
+  if (nameA < nameB) {
+    return -1;
+  }
+  return 0;
+});
+
+function NamesList(): JSX.Element {
   return (
-    <p className={`babyName ${sex}`} key={id}>
-      {name}
-    </p>
+    <div id="babyNamesList">
+      {sortedNames.map((baby) => (
+        <NameCard key={baby.id} {...baby} />
+      ))}
+    </div>
   );
 }
 
