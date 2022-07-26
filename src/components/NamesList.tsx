@@ -1,30 +1,27 @@
 import NameCard from "./NameCard";
 import searchNames from "../utils/searchNames";
 import babyNamesData from "../babyNamesData.json";
+import sortNames from "../utils/sortNames"
+import removedFavourites from "../utils/removedFavourites";
+import {babyNameInterface} from '../utils/types'
 
 interface NamesListProps {
   searchQuery: string;
+  favouritesList: babyNameInterface[];
+  // eslint-disable-next-line
+  setFavouritesList: Function; 
 }
 
-const sortedNames = babyNamesData.sort(function (a, b) {
-  const nameA = a.name;
-  const nameB = b.name;
-  if (nameA > nameB) {
-    return 1;
-  }
-  if (nameA < nameB) {
-    return -1;
-  }
-  return 0;
-});
 
 
-function NamesList({searchQuery}: NamesListProps): JSX.Element {
-  const namesToDisplay = searchNames(searchQuery, sortedNames);
+function NamesList({searchQuery, favouritesList, setFavouritesList}: NamesListProps): JSX.Element {
+  const sortedNames = sortNames(babyNamesData);
+  const removedFavouriteNames = removedFavourites(sortedNames, favouritesList);
+  const namesToDisplay = searchNames(searchQuery, removedFavouriteNames);
   return (
     <div id="babyNamesList">
       {namesToDisplay.map((baby) => (
-        <NameCard key={baby.id} {...baby} />
+        <NameCard key={baby.id} baby={baby} favouritesList={favouritesList} setFavouritesList={setFavouritesList}/>
       ))}
     </div>
   );

@@ -1,13 +1,17 @@
-interface NameCardProps {
-    id: number;
-    name: string;
-    sex: string;
+import {babyNameInterface} from '../utils/types'
+
+
+  interface NameCardProps {
+    baby: babyNameInterface;
+    favouritesList: babyNameInterface[];
+    // eslint-disable-next-line
+    setFavouritesList: Function;
   }
   
-  function NameCard({ id, name, sex }: NameCardProps): JSX.Element {
+  function NameCard({ baby, favouritesList, setFavouritesList }: NameCardProps): JSX.Element {
     return (
-      <p className={`babyName ${sex}`} key={id}>
-        {name}
+      <p className={`babyName ${baby.sex}`} key={baby.id} onClick={() => setFavouritesList([...favouritesList, baby])}>
+        {baby.name}
       </p>
     );
   }
