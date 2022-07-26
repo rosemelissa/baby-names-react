@@ -10,14 +10,15 @@ interface NamesListProps {
   favouritesList: babyNameInterface[];
   // eslint-disable-next-line
   setFavouritesList: Function; 
+  gender: 'all' | 'f' | 'm';
 }
 
 
 
-function NamesList({searchQuery, favouritesList, setFavouritesList}: NamesListProps): JSX.Element {
+function NamesList({searchQuery, favouritesList, setFavouritesList, gender}: NamesListProps): JSX.Element {
   const sortedNames = sortNames(babyNamesData);
   const removedFavouriteNames = removedFavourites(sortedNames, favouritesList);
-  const namesToDisplay = searchNames(searchQuery, removedFavouriteNames);
+  const namesToDisplay = searchNames(searchQuery, removedFavouriteNames, gender);
   return (
     <div id="babyNamesList">
       {namesToDisplay.map((baby) => (
