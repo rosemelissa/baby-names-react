@@ -15,6 +15,17 @@ Body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#favouriteNamesList {
+    border: 2px dotted pink;
+    width: 50vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .babyName {
     font-weight: bolder;
     border-radius: 2px;

@@ -1,14 +1,42 @@
+import NameCard from "./NameCard";
+import searchNames from "../utils/searchNames";
+import babyNamesData from "../babyNamesData.json";
+import sortNames from "../utils/sortNames";
+import removedFavourites from "../utils/removedFavourites";
+import { babyNameInterface } from "../utils/types";
+
 interface NamesListProps {
-  id: number;
-  name: string;
-  sex: string;
+  searchQuery: string;
+  favouritesList: babyNameInterface[];
+  // eslint-disable-next-line
+  setFavouritesList: Function;
+  gender: "all" | "f" | "m";
 }
 
-function NamesList({ id, name, sex }: NamesListProps): JSX.Element {
+function NamesList({
+  searchQuery,
+  favouritesList,
+  setFavouritesList,
+  gender,
+}: NamesListProps): JSX.Element {
+  const sortedNames = sortNames(babyNamesData);
+  const removedFavouriteNames = removedFavourites(sortedNames, favouritesList);
+  const namesToDisplay = searchNames(
+    searchQuery,
+    removedFavouriteNames,
+    gender
+  );
   return (
-    <p className={`babyName ${sex}`} key={id}>
-      {name}
-    </p>
+    <div id="babyNamesList">
+      {namesToDisplay.map((baby) => (
+        <NameCard
+          key={baby.id}
+          baby={baby}
+          favouritesList={favouritesList}
+          setFavouritesList={setFavouritesList}
+        />
+      ))}
+    </div>
   );
 }
 
