@@ -1,5 +1,5 @@
 export interface babyNameInterface {
-    id: number;
-    name: string;
-    sex: string;
-};
+  id: number;
+  name: string;
+  sex: string;
+}
