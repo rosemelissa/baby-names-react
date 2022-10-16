@@ -8,8 +8,7 @@ import { babyNameInterface } from "../utils/types";
 interface NamesListProps {
   searchQuery: string;
   favouritesList: babyNameInterface[];
-  // eslint-disable-next-line
-  setFavouritesList: Function;
+  setFavouritesList: React.Dispatch<React.SetStateAction<babyNameInterface[]>>;
   gender: "all" | "f" | "m";
 }
 
